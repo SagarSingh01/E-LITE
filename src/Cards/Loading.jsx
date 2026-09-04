@@ -1,6 +1,6 @@
 function Loading() {
     return (
-        <>
+        <div className="mt-4 grid gap-6 justify-items-center place-content-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {Array.from({ length: 8 }).map((_, i) => (
                 <div
                     key={i}
@@ -31,7 +31,7 @@ function Loading() {
                     <div className="mx-6 mb-2 h-8 rounded-xl bg-gray-200"></div>
                 </div>
             ))}
-        </>
+        </div>
     );
 }
 

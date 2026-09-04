@@ -2,11 +2,11 @@ import { FaExclamationTriangle } from "react-icons/fa";
 
 function Error() {
     return (
-        <div className="col-span-full min-h-111.5 w-fit flex items-center justify-center px-4 rounded-lg">
+        <div className="col-span-full min-h-111.5 w-full flex items-center justify-center px-4 rounded-lg">
 
             <div className="flex flex-col items-center text-center">
 
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-100 text-red-500">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-100 text-red-500 animate-pulse">
                     <FaExclamationTriangle size={28} />
                 </div>
 
