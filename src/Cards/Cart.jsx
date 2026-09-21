@@ -2,10 +2,12 @@ import React, { useContext } from 'react'
 import { FaArrowLeft, FaStar, FaTruck, FaShieldAlt, FaUndo, FaHeart } from 'react-icons/fa'
 import { FaIndianRupeeSign } from 'react-icons/fa6'
 import { newContext } from '../Context/Context'
+import { useNavigate } from 'react-router-dom';
 
 function Cart() {
-  const { setCart, cartItem } = useContext(newContext);
+  const { cartItem } = useContext(newContext);
   const product = cartItem?.[0];
+  const navigate = useNavigate()
 
   return (
     <section className='min-h-screen w-full bg-gray-100 text-gray-900'>
@@ -13,7 +15,7 @@ function Cart() {
       <header className='sticky top-0 z-30 border-b border-gray-200 bg-white/95 backdrop-blur'>
         <div className='mx-auto flex max-w-7xl items-center gap-3 px-4 py-4 sm:px-6 lg:px-8'>
           <button
-            onClick={() => setCart(false)}
+            onClick={() => navigate('/')}
             className='flex cursor-pointer items-center gap-2 rounded-xl px-3 py-2 text-md font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 active:scale-95'
           >
             <FaArrowLeft size={15} />
@@ -42,8 +44,8 @@ function Cart() {
 
               <img
                 className='h-full w-full cursor-pointer object-contain p-8 transition-transform duration-500 group-hover:scale-105'
-                src={product.image}
-                alt={product.name}
+                src={product?.image}
+                alt={product?.name}
               />
             </div>
           </div>
@@ -52,12 +54,12 @@ function Cart() {
           <div className='flex flex-col rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-7 lg:p-8'>
             {/* CATEGORY */}
             <span className='w-fit rounded-full bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-blue-600'>
-              {product.subCategory}
+              {product?.subCategory}
             </span>
 
             {/* PRODUCT NAME */}
             <h1 className='mt-4 text-2xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-3xl'>
-              {product.name}
+              {product?.name}
             </h1>
 
             {/* RATING */}
@@ -65,12 +67,12 @@ function Cart() {
               <div className='flex items-center gap-1.5 rounded-lg bg-yellow-50 px-3 py-1.5'>
                 <FaStar size={14} className='text-yellow-500' />
                 <span className='text-sm font-bold text-gray-800'>
-                  {product.rating.stars}
+                  {product?.rating.stars}
                 </span>
               </div>
 
               <span className='text-sm text-gray-500'>
-                {product.rating.count}
+                {product?.rating.count}
               </span>
 
               <span className='text-gray-300'>•</span>
@@ -85,11 +87,11 @@ function Cart() {
               <div className='flex flex-wrap items-center gap-3'>
                 <span className='flex items-center text-3xl font-extrabold text-blue-600'>
                   <FaIndianRupeeSign size={25} />
-                  {(product.priceCents * 77 / 100).toLocaleString('en-IN')}
+                  {(product?.priceCents * 77 / 100).toLocaleString('en-IN')}
                 </span>
 
                 <span className='text-base text-gray-400 line-through'>
-                  ₹{product.priceCents.toLocaleString('en-IN')}
+                  ₹{product?.priceCents.toLocaleString('en-IN')}
                 </span>
 
                 <span className='rounded-md bg-green-100 px-2 py-1 text-xs font-bold text-green-700'>
@@ -109,7 +111,7 @@ function Cart() {
               </h2>
 
               <p className='mt-2 text-sm leading-6 text-gray-500'>
-                {product.description}
+                {product?.description}
               </p>
             </div>
 

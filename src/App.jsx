@@ -7,11 +7,6 @@ import Footer from './Components/Footer';
 import ScrollProgress from './Scroll Progress/Scroll';
 
 function App() {
-  const { cart } = useContext(newContext);
-
-  if (cart) {
-    return <Cart />
-  }
 
   return (
     <>
