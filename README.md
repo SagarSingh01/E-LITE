@@ -1,50 +1,91 @@
+<div align="center">
+
 # 🛒 E-LITE
 
-Welcome to E-LITE - A modern, responsive **E-Commerce web application** built with **React.js and Tailwind CSS**.
+### A modern, responsive e-commerce web app built with React.js & Tailwind CSS
 
-This project was created to strengthen my understanding of **React state management, Context API, custom hooks, API handling, conditional rendering, and modern JavaScript (ES6+)** by building a practical application.
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Vite](https://img.shields.io/badge/Vite-Build-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+
+**[🔗 Live Demo](https://e-lite-nine.vercel.app) · [🐛 Report Bug](https://github.com/SagarSingh01/E-LITE/issues) · [✨ Request Feature](https://github.com/SagarSingh01/E-LITE/issues)**
+
+</div>
 
 ---
 
-## 🌐 Live Demo
+## 📖 About
 
-🔗 https://e-lite-nine.vercel.app
+**E-LITE** is a modern e-commerce storefront built to strengthen practical, real-world command of **React state management, the Context API, custom hooks, API handling, conditional rendering, and modern JavaScript (ES6+)**.
+
+Rather than a template clone, every piece — from cart state to loading skeletons — was built from scratch to mirror the patterns used in production React apps.
+
+> 💡 Whether you're browsing for inspiration, evaluating the code, or contributing, this README will walk you through everything you need.
+
+---
+
+## 📑 Table of Contents
+
+- [Features](#-features)
+- [Tech Stack](#️-tech-stack)
+- [API Used](#-api-used)
+- [React Concepts Practiced](#-react-concepts-practiced)
+- [Project Structure](#-project-structure)
+- [Component Responsibilities](#-component-responsibilities)
+- [Getting Started](#-getting-started)
+- [Environment Variables](#-environment-variables)
+- [Future Improvements](#-future-improvements)
+- [Author](#-author)
+- [License](#-license)
+- [Support](#-support)
 
 ---
 
 ## ✨ Features
 
-### 🛍️ Product Features
+<table>
+<tr>
+<td width="33%" valign="top">
 
+### 🛍️ Product Features
 - Browse products dynamically from an external API
 - Responsive product grid
-- Product image preview
-- Product details view
-- Product name, category, price, and rating
-- Category-based product filtering
+- Product image preview & zoom
+- Detailed product view
+- Name, category, price & rating display
+- Category-based filtering
 - Interactive product cards
 - Add-to-cart functionality
-- Cart item count
+- Live cart item count
+
+</td>
+<td width="33%" valign="top">
 
 ### ⚡ Application States
-
 - Loading state
-- Loading skeleton UI
-- Error state
+- Skeleton loading UI
+- Error state with fallback UI
 - Category selection state
 - Cart state
 - Dynamic product rendering
 
-### 🎨 UI/UX
+</td>
+<td width="33%" valign="top">
 
+### 🎨 UI/UX
 - Fully responsive design
 - Modern product card layout
 - Smooth hover animations
 - Product image zoom interaction
-- Clean typography and spacing
+- Clean typography & spacing
 - Responsive grid system
-- Interactive buttons
 - Mobile-friendly interface
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -52,26 +93,27 @@ This project was created to strengthen my understanding of **React state managem
 
 | Category | Technology |
 |---|---|
-| Library | React.js |
-| Styling | Tailwind CSS |
-| State Management | React Context API |
-| Data Fetching | Custom Hook (`useFetch`) + Fetch API |
-| Build Tool | Vite |
-| Deployment | Vercel |
+| **Library** | React.js |
+| **Styling** | Tailwind CSS |
+| **State Management** | React Context API |
+| **Data Fetching** | Custom Hook (`useFetch`) + Fetch API |
+| **Build Tool** | Vite |
+| **Deployment** | Vercel |
 
 ---
 
 ## 🔌 API Used
 
-This project uses the **[Free E-Commerce Products API](https://github.com/kolzsticks/Free-Ecommerce-Products-Api)** — a free, static JSON dataset of sample products (name, price, category, rating, image, etc.), ideal for practice e-commerce builds.
+E-LITE runs on the **[Free E-Commerce Products API](https://github.com/kolzsticks/Free-Ecommerce-Products-Api)** — a free, static JSON dataset of sample products (name, price, category, rating, image, etc.), ideal for practice e-commerce builds.
 
-- **Endpoint:**
-  ```
-  https://kolzsticks.github.io/Free-Ecommerce-Products-Api/main/products.json
-  ```
-- Returns the **full product list** in a single request — category filtering (`Filter.jsx`) and any other derived views are handled **client-side** after the fetch, rather than via separate API endpoints.
+```
+📡 Endpoint
+https://kolzsticks.github.io/Free-Ecommerce-Products-Api/main/products.json
+```
 
-Data fetching is abstracted into a single reusable hook: [`useFetch.js`](./src/Hooks/useFetch.js), which handles the request lifecycle (loading, data, error) so any component can consume live data with one line.
+The API returns the **full product list** in a single request. Category filtering (`Filter.jsx`) and any other derived views are handled **client-side** after the fetch, rather than through separate API endpoints.
+
+All data fetching is abstracted into one reusable hook — [`useFetch.js`](./src/Hooks/useFetch.js) — which manages the request lifecycle (`loading`, `data`, `error`) so any component can pull live data in a single line:
 
 ```js
 const { data, loading, error } = useFetch(
@@ -83,23 +125,22 @@ const { data, loading, error } = useFetch(
 
 ## 🧠 React Concepts Practiced
 
-### `useState`
+<details open>
+<summary><strong>🔹 useState</strong></summary>
 
-Used to manage application states such as:
-
-- Selected category
-- Cart state
-- Cart item count
-- UI interactions
+Manages application state such as selected category, cart state, cart item count, and UI interactions.
 
 ```js
 const [category, setCategory] = useState("All");
 const [count, setCount] = useState(0);
 ```
 
-### `useEffect`
+</details>
 
-Used to trigger side effects such as fetching product data whenever the selected category changes, and syncing cart state.
+<details open>
+<summary><strong>🔹 useEffect</strong></summary>
+
+Triggers side effects such as fetching product data whenever the selected category changes, and syncing cart state.
 
 ```js
 useEffect(() => {
@@ -107,112 +148,206 @@ useEffect(() => {
 }, [category]);
 ```
 
-### `useContext` + Context API
+</details>
 
-Global cart and product state (`Context.jsx`) is shared across components without prop drilling — the cart, cart count, and category filter are all accessible from any nested component.
+<details open>
+<summary><strong>🔹 useContext + Context API</strong></summary>
 
-### Custom Hooks
+Global cart and product state (`Context.jsx`) is shared across components without prop drilling — cart, cart count, and category filter are all accessible from any nested component.
+
+</details>
+
+<details open>
+<summary><strong>🔹 Custom Hooks</strong></summary>
 
 `useFetch.js` encapsulates the `loading` / `data` / `error` pattern into a single reusable hook, keeping components lean and free of duplicated fetch logic.
 
+</details>
+
 ---
 
-## 📁 Project / Component Structure
+## 📁 Project Structure
 
 ```
-E-Commerce/
+E-LITE/
+│
 ├── public/
+│   └── ...
+│
 ├── src/
-│   ├── assets/                # Static images/icons
-│   ├── Cards/
-│   │   ├── Card.jsx           # Individual product card
-│   │   ├── Cart.jsx           # Cart view / cart items list
-│   │   ├── Error.jsx          # Error state UI
-│   │   ├── Filter.jsx         # Category filter UI
-│   │   └── Loading.jsx        # Loading / skeleton UI
+│   ├── assets/
+│   │   └── ...
+│   │
 │   ├── Components/
-│   │   ├── Header.jsx         # Navbar with cart icon/count
-│   │   ├── Hero.jsx           # Landing hero section
-│   │   └── Product.jsx        # Product grid / listing container
+│   │   ├── Cards/
+│   │   │   ├── Card.jsx
+│   │   │   ├── Cart.jsx
+│   │   │   ├── ProductDetails.jsx
+│   │   │   ├── Filter.jsx
+│   │   │   ├── ProductDetailsLoading.jsx
+│   │   │   ├── Loading.jsx
+│   │   │   └── Error.jsx
+│   │   │
+│   │   └── Main/
+│   │       ├── Header.jsx
+│   │       ├── Hero.jsx
+│   │       └── Footer.jsx
+│   │
 │   ├── Context/
-│   │   └── Context.jsx        # Global state (cart, category, etc.)
+│   │   └── Context.jsx
+│   │
 │   ├── Hooks/
-│   │   └── useFetch.js        # Custom hook for API calls
-│   ├── App.jsx                # Root component
-│   ├── index.css              # Global styles (Tailwind entry)
-│   └── main.jsx                # App entry point
+│   │   └── useFetch.js
+│   │
+│   ├── Scroll Progress/
+│   │   └── Scroll.jsx
+│   │
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+├── .env
+├── .gitignore
+├── index.html
 ├── package.json
+├── vite.config.js
+├── vercel.json
 └── README.md
 ```
 
-### Component Responsibilities
+---
+
+## 🧩 Component Responsibilities
 
 | Component | Responsibility |
 |---|---|
-| `Header.jsx` | Navigation bar, branding, live cart item count |
-| `Hero.jsx` | Landing/banner section |
-| `Product.jsx` | Fetches and renders the product grid |
-| `Card.jsx` | Displays a single product (image, name, price, rating, add-to-cart) |
-| `Cart.jsx` | Displays cart items and cart summary |
-| `Filter.jsx` | Category selector for filtering products |
-| `Loading.jsx` | Skeleton/spinner shown while data is being fetched |
-| `Error.jsx` | Fallback UI shown when the API request fails |
-| `Context.jsx` | Provides cart state, category state, and handlers app-wide |
-| `useFetch.js` | Reusable hook: returns `{ data, loading, error }` for any endpoint |
+| `Header.jsx` | Navigation bar, E-LITE branding, cart access and navigation |
+| `Hero.jsx` | Main landing section introducing the E-LITE store |
+| `Footer.jsx` | Footer section containing supporting information and navigation |
+| `Product.jsx` | Main product section that displays the product catalog |
+| `Card.jsx` | Displays individual products with images and product information |
+| `ProductDetails.jsx` | Displays complete details of a selected product |
+| `Cart.jsx` | Displays selected products and manages the cart interface |
+| `Filter.jsx` | Filters products based on selected categories |
+| `Loading.jsx` | Displays a skeleton loading UI while products are being fetched |
+| `ProductDetailsLoading.jsx` | Displays a skeleton UI while product details are loading |
+| `Error.jsx` | Displays fallback UI when the API request fails |
+| `Context.jsx` | Manages shared application state such as cart and category |
+| `useFetch.js` | Reusable custom hook for fetching and managing API data |
+| `Scroll.jsx` | Handles scroll-related behavior within the application |
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### ✅ Prerequisites
 
-- Node.js (v16+)
-- npm or yarn
+Make sure you have the following installed before running E-LITE locally:
 
-### Installation
+- **Node.js** v16 or higher
+- **npm**
+- **Git**
+
+### 📥 Installation
 
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/SagarSingh01/E-LITE.git
 
-# Navigate into the project
+# 2. Move into the project directory
 cd E-LITE
 
-# Install dependencies
+# 3. Install dependencies
 npm install
 
-# Start the development server
+# 4. Start the development server
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173` (default Vite port).
+Once running, open your browser at:
 
-### Build for Production
+```
+http://localhost:5173
+```
+
+### 🔐 Environment Variables
+
+E-LITE uses a Vite environment variable to store the product API endpoint.
+
+Create a `.env` file in the project root:
+
+```env
+VITE_PRODUCTS_API=https://kolzsticks.github.io/Free-Ecommerce-Products-Api/main/products.json
+```
+
+Access it inside the app with:
+
+```js
+import.meta.env.VITE_PRODUCTS_API
+```
+
+> ℹ️ **Note:** Vite environment variables exposed to the frontend must be prefixed with `VITE_`.
+>
+> ⚠️ **Important:** Never commit sensitive API keys or secrets to GitHub. Add `.env` to your `.gitignore` when needed.
+
+### 🏗️ Build for Production
 
 ```bash
+# Create an optimized production build
 npm run build
+
+# Preview the production build locally
+npm run preview
 ```
 
 ---
 
 ## 📌 Future Improvements
 
-- Persist cart state with localStorage
-- Product detail/single-product page with routing
-- Search functionality
-- Checkout flow / payment integration
-- Wishlist feature
-- Pagination or infinite scroll
+| Feature | Status |
+|---|---|
+| 🛒 Persistent cart using `localStorage` | Planned |
+| ❤️ Wishlist functionality | Planned |
+| 🔎 Product search | Planned |
+| 🎯 Advanced product filtering | Planned |
+| 🔢 Product quantity management | Planned |
+| 📦 Order management | Planned |
+| 🔐 User authentication | Planned |
+| 💳 Checkout & payment integration | Planned |
+| ⭐ Product reviews and ratings | Planned |
+| 📄 Pagination | Planned |
+| ♾️ Infinite scrolling | Planned |
+| 🔔 Toast notifications | Planned |
+| 🌐 Backend integration | Planned |
+| 📱 Further mobile UX polish | Planned |
 
 ---
 
-## 👤 Author
+## 👨‍💻 Author
+
+<div align="center">
 
 **Sagar Singh**
-🔗 Portfolio: [sagar-singh.vercel.app](https://sagar-singh.vercel.app)
+
+[![GitHub](https://img.shields.io/badge/GitHub-SagarSingh01-181717?style=for-the-badge&logo=github)](https://github.com/SagarSingh01)
+[![Portfolio](https://img.shields.io/badge/Portfolio-sagar--singh.vercel.app-000000?style=for-the-badge&logo=vercel)](https://sagar-singh.vercel.app)
+
+</div>
 
 ---
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the **[MIT License](LICENSE)**.
+
+---
+
+## ⭐ Support
+
+If you found this project useful or interesting, consider giving the repository a **⭐ star** on GitHub — it helps motivate further development and improvement.
+
+<div align="center">
+
+Made with ❤️ and lots of ☕ by **Sagar Singh**
+
+</div>
