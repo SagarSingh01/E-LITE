@@ -1,18 +1,33 @@
-import React, { useContext } from 'react'
 import { FaArrowLeft, FaStar, FaTruck, FaShieldAlt, FaUndo, FaHeart } from 'react-icons/fa'
 import { FaIndianRupeeSign } from 'react-icons/fa6'
-import { newContext } from '../Context/Context'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import Error from './Error';
+import ProductDetailsLoading from './ProductDetailsLoading';
+import useFetch from '../../Hooks/useFetch';
+import { useContext } from 'react';
+import { newContext } from '../../Context/Context';
 
-function Cart() {
-  const { cartItem } = useContext(newContext);
-  const product = cartItem?.[0];
+
+function ProductDetails() {
+
   const navigate = useNavigate()
 
+  const {count , setCount} = useContext(newContext)
+
+  const { id } = useParams()
+
+  const [data, loading, error] = useFetch(import.meta.env.VITE_PRODUCTS_API)
+
+  const product = data?.find((pro) => String(pro.id) === String(id))
+
+  if (loading) return <ProductDetailsLoading />
+
+  if (error) return <Error />
+
   return (
-    <section className='min-h-screen w-full bg-gray-100 text-gray-900'>
+    <section className='min-h-screen w-full bg-gray-300 text-gray-900'>
       {/* HEADER */}
-      <header className='sticky top-0 z-30 border-b border-gray-200 bg-white/95 backdrop-blur'>
+      <header className='sticky top-0 z-30 border-b border-gray-200 bg-gray-200 backdrop-blur'>
         <div className='mx-auto flex max-w-7xl items-center gap-3 px-4 py-4 sm:px-6 lg:px-8'>
           <button
             onClick={() => navigate('/')}
@@ -140,7 +155,9 @@ function Cart() {
 
             {/* BUTTONS */}
             <div className='mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2'>
-              <button className='cursor-pointer rounded-xl border-2 border-blue-600 bg-blue-600 py-3 text-sm font-bold text-white shadow-sm transition-all duration-200 hover:bg-blue-700 hover:shadow-md active:scale-[0.98]'>
+              <button
+                onClick={() => setCount(count + 1)}
+                className='cursor-pointer rounded-xl border-2 border-blue-600 bg-blue-600 py-3 text-sm font-bold text-white shadow-sm transition-all duration-200 hover:bg-blue-700 hover:shadow-md active:scale-[0.98]'>
                 Add to Cart
               </button>
 
@@ -188,4 +205,4 @@ function Cart() {
   )
 }
 
-export default Cart
+export default ProductDetails

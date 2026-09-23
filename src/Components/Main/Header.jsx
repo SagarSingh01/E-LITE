@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { FaBars, FaSearch, FaUser, FaChevronDown } from 'react-icons/fa'
 import { GrCart } from 'react-icons/gr'
-import { newContext } from '../Context/Context'
+import { newContext } from '../../Context/Context'
+import Logo from "../../assets/E-LITE.png"
 import Filter from '../Cards/Filter'
-import Logo from "../assets/E-LITE.png"
 
 function Header() {
     const { count } = useContext(newContext)

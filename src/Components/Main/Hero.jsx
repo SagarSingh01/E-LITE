@@ -1,8 +1,4 @@
-import React from 'react'
-import Filter from '../Cards/Filter'
-import Card from '../Cards/Card'
-import Product from './Product'
-
+import Product from '../Cards/Product'
 
 function Hero() {
     return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaFacebookF, FaInstagram, FaTwitter, FaGithub, FaArrowUp, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa'
-import Logo from "../assets/E-LITE.png"
+import Logo from "../../assets/E-LITE.png"
 
 function Footer() {
     const scrollToTop = () => {

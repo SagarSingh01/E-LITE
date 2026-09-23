@@ -1,15 +1,18 @@
-import { Children, createContext, useState } from "react";
+import { Children, createContext, useEffect, useState } from "react";
 
 export const newContext = createContext();
 
 export const FilterFunction = ({ children }) => {
 
-    const [category, setCategory] = useState("All"); // Category Filter
-    const [count, setCount] = useState(0); // Count Items
-    const [cartItem, setCartItem] = useState([]); // Cart Products
+    // Category Filter
+    const [category, setCategory] = useState("All");
+
+    // Count Products
+    const [count, setCount] = useState(0);
+
 
     return (
-        <newContext.Provider value={{ category, setCategory, count, setCount, cartItem, setCartItem }}>
+        <newContext.Provider value={{ category, setCategory, count, setCount }}>
             {children}
         </newContext.Provider>
     )

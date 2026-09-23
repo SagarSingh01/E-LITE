@@ -1,26 +1,21 @@
 import React, { useContext } from 'react'
-import useFetch from '../Hooks/useFetch'
-import { newContext } from '../Context/Context'
+import useFetch from '../../Hooks/useFetch'
+import { newContext } from '../../Context/Context'
 import Loading from './Loading'
 import Error from './Error'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Card() {
-    const { category, setCartItem } = useContext(newContext);
-    const [data, loading, error] = useFetch('https://kolzsticks.github.io/Free-Ecommerce-Products-Api/main/products.json')
+    const { category } = useContext(newContext);
+    const [data, loading, error] = useFetch(import.meta.env.VITE_PRODUCTS_API)
 
     const navigate = useNavigate();
 
     const filterProducts = category === 'All' ? data : data?.filter((pro) => pro.category === category);
 
     const handleProduct = (id) => {
-        const product = data?.filter((pro) => pro.id === id);
-        setCartItem(product);
-        navigate('/product')
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
+        navigate(`/product/${id}`)
+        window.scrollTo(0,0)
     }
 
     if (loading) {

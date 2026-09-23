@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { newContext } from '../Context/Context'
+import { newContext } from '../../Context/Context'
 
 function Filter() {
     const categories = ['All', 'Beauty & Personal Care', 'Electronics & Gadgets', 'Fashion & Apparel', 'Home & Kitchen', 'Health & Fitness'];
